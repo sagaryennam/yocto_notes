@@ -1,0 +1,8 @@
+What is Yocto?
+THE YOCTO PROJECT. IT'S NOT AN EMBEDDED LINUX DISTRIBUTION, IT CREATES A CUSTOM ONE FOR YOU.
+
+Why to use Yocto?
+To configure the Linux according to our specs.
+The Image contains what we need.
+No extra packages.
+Small Image Size.
