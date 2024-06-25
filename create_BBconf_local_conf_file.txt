@@ -1,0 +1,18 @@
+1)After sourcing using "source oe-init-build-env" command in poky directory, we will get "build" terminal
+  
+2)cd to conf directory, in this directory you can see bblayer.conf & local.conf file
+  
+3)bblayer.conf: This file is used to add the layers path in "BBLAYERS" variable
+                a) Enter the following command in "build" terminal to See what are the layers added: bitbake-layers show-layers
+                b) Enter the following command in "build" terminal to create a own layer, and that layer should be in poky directory:
+                      bitbake-layers create-layer <path_to_poky_directory>/<meta-layer_name>
+  
+4)local.conf: This file is used to tell to
+                a) for which board you want to build, variable is "MACHINE"
+                b) What is the Source directory, variable is "SOURCES"
+                c) Where you want to download things/packages(source code files) related to your board, variable is "DL_DIR"
+                d) Where you want to store already compiled binary files, variable is "SSTATE_DIR"
+                e) Where you want to store your temperory files, variable is "TMPDIR"
+                f) Which distribution you want to use like ANGSTRONG, POKY, etc., variable is "DISTRO"
+                g) what should be your RFS package format like deb,rpm,ipn etc,. variable is "PACKAGE_CLASSES"
+                h) left your remaining setting by default or you can edit as per the requirement.
