@@ -9,7 +9,7 @@
   
 4)local.conf: This file is used to tell to
                 a) for which board you want to build, variable is "MACHINE"
-                b) What is the Source directory, variable is "SOURCES"
+                b) This is Source directory where I created to store my yocto related donaloads, build files & temperory files will come, variable is "SOURCES"
                 c) Where you want to download things/packages(source code files) related to your board, variable is "DL_DIR"
                 d) Where you want to store already compiled binary files, variable is "SSTATE_DIR"
                 e) Where you want to store your temperory files, variable is "TMPDIR"
