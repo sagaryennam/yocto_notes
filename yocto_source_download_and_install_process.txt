@@ -1,0 +1,16 @@
+1)Install required packages
+--> sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev pylint3 xterm python3-subunit mesa-common-dev zstd liblz4-tool
+
+2)Building Image
+  *What is Poky?
+  *Poky is a reference distribution of the Yocto Project®. It contains the OpenEmbedded Build System (BitBake and OpenEmbedded Core) as well as a set of metadata to get you started building your own distro.
+
+  *Cloning Poky
+  *Create a project folder and clone the poky in it.
+  
+  mkdir yocto_tutorial
+  cd yocto_tutorial
+  git clone git://git.yoctoproject.org/poky -b kirkstone
+  Initialize Build Environment
+  cd poky
+  source oe-init-build-env
