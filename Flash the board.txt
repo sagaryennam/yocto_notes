@@ -56,4 +56,16 @@ After creation of bblayer.conf & local.conf, then you have to flash your board.
   b) For Windows, write the WIC image to the SD card with Win32DiskImager.exe
 
 3) Eject your SD card and insert in your board, I am using beablebone board, so I inserted it in beaglebone and using serial TTL I can see the booting of my board.
+
+4) Checking image
+    Execute the following command to check the kernel version
     
+    uname -r
+    uname -a
+    Execute the following to see the partitions
+    
+    lsblk
+    Check rootfs folders
+    
+    cd /
+    ls
