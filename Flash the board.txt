@@ -1,0 +1,59 @@
+After creation of bblayer.conf & local.conf, then you have to flash your board.
+
+1) To create an uboot, Zimage, device tree & RFS, you have to enter following command in build terminal:
+    core-image-minimal
+            'or'
+    core-image-full-cmdline
+            'or'
+    core-image-sato
+            'or'
+    core-image-weston
+            'or'
+    meta-toolchain
+            'or'
+    meta-ide-support
+
+    In my application I used 'core-image-minimal' command
+
+    It take aroud 2-3 hours of time depend on the internet connection and speed of your PC.
+
+    After successfully creation of image, you can see image file in the direcotory 'sources/tmp/deploy/images/beaglebone-yocto'
+    "sources" folder is the folder where I am using to download all the yocto related things as I mentioned in the "build/conf/local.conf" file.
+      Just type this command in the beaglebone-yocto folder: ll  | grep "cmdline" | grep ".wic"
+        you will get the .wic file, this is the source file you have to use to create BOOT & ROOT partition in your SD card.
+
+2) Flash the WIC image to SD card
+
+  a) For Linux:
+     First, make sure that the SD card is unmounted. You can use lsblk to inspect whether the SD card partitions have a MOUNTPOINT. If the SD card is mounted, use umount to unmount the partitions.
+  
+      For example, if lsblk returned this:
+        $ lsblk
+        NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+        :
+        :
+        sdc      8:32   1    15G  0 disk
+        ├─sdc1   8:33   1 131.8M  0 part /media/localUser/boot
+        └─sdc2   8:34   1 765.9M  0 part /media/localUser/root
+  
+      Then we would want to unmount sdc1 and sdc2:
+        $ sudo umount /media/localUser/boot
+        $ sudo umount /media/localUser/root
+        $ lsblk
+        NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+        :
+        :
+        sdc      8:32   1    15G  0 disk
+        ├─sdc1   8:33   1 131.8M  0 part
+        └─sdc2   8:34   1 765.9M  0 part
+
+      Next, write the WIC image to the SD card with the following command:
+        sudo dd bs=4M if=./tisdk-default-image-am64xx-evm.wic of=/dev/sdx status=progress && sync
+
+      In the above example, the SD card is at /dev/sdc. In that case, the image write command would look like this:
+        sudo dd bs=4M if=./tisdk-default-image-am64xx-evm.wic of=/dev/sdc status=progress && sync
+
+  b) For Windows, write the WIC image to the SD card with Win32DiskImager.exe
+
+3) Eject your SD card and insert in your board, I am using beablebone board, so I inserted it in beaglebone and using serial TTL I can see the booting of my board.
+    
